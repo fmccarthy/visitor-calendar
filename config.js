@@ -12,5 +12,5 @@ const CONFIG = {
   // "Add a visitor" button will appear linking people straight to it.
   SHEET_EDIT_URL: "https://docs.google.com/spreadsheets/d/1xdlgwjoyvADdHdqNykfOtr-3aB1ljq904uvADfNJIwM/edit",
 
-  GROUP_NAME: "Research Group Visitor Calendar",
+  GROUP_NAME: "Cosmo Visitors in Cambridge",
 };
