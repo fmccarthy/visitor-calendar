@@ -9,7 +9,13 @@
 <body>
   <header class="topbar">
     <h1 id="group-name">Visitor Calendar</h1>
-    <a id="add-visitor-link" class="add-btn" href="#" target="_blank" rel="noopener" hidden>+ Add a visitor</a>
+    <div class="topbar-right">
+      <div class="sync-row">
+        <span id="sync-status">Loading…</span>
+        <button id="refresh-btn">Refresh</button>
+      </div>
+      <a id="add-visitor-link" class="add-btn" href="#" target="_blank" rel="noopener" hidden>+ Add a visitor</a>
+    </div>
   </header>
 
   <main>
@@ -45,11 +51,6 @@
       <ul id="day-panel-list" class="list"></ul>
     </div>
   </div>
-
-  <footer>
-    <span id="sync-status">Loading…</span>
-    <button id="refresh-btn">Refresh</button>
-  </footer>
 
   <script src="config.js"></script>
   <script src="app.js"></script>
