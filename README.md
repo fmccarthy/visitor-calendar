@@ -9,15 +9,17 @@ Make a new Google Sheet with a header row using exactly these column names
 (only **Name** and **Start Date** are required — leave the rest blank when
 not needed):
 
-| Name | Start Date | End Date | Talk Title | Talk Date | Talk Time | Notes |
-|------|-----------|----------|------------|-----------|-----------|-------|
-| Jane Smith | 2026-10-06 | 2026-10-10 | Cosmic dust and you | 2026-10-08 | 2:00pm | Room 301 |
-| Alex Lee | 2026-10-13 | | | | | |
+| Name | Start Date | End Date | Talk Title | Talk Date | Talk Time | Notes | Link |
+|------|-----------|----------|------------|-----------|-----------|-------|------|
+| Jane Smith | 2026-10-06 | 2026-10-10 | Cosmic dust and you | 2026-10-08 | 2:00pm | Room 301 | https://... |
+| Alex Lee | 2026-10-13 | | | | | | |
 
 Notes:
 - Dates can be typed as `2026-10-06` or `10/6/2026` — Sheets will format them
   however your locale does, either works.
 - `End Date` blank = a single-day visit.
+- `Link` is optional — paste a URL (e.g. a sign-up sheet) and a "Sign up to
+  meet them →" link appears wherever that visitor is shown on the site.
 - `Talk Date` blank but `Talk Title` filled = assumes the talk is on the
   start date.
 

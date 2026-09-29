@@ -104,8 +104,9 @@ function buildVisits(rows) {
     const talkDate = parseSheetDate(r["talk date"]) || (talkTitle ? start : null);
     const talkTime = r["talk time"] || "";
     const notes = r["notes"] || "";
+    const link = r["link"] || "";
 
-    const visit = { name, start, end, talkTitle, talkDate, talkTime, notes };
+    const visit = { name, start, end, talkTitle, talkDate, talkTime, notes, link };
     allVisits.push(visit);
 
     let d = new Date(start);
@@ -114,7 +115,7 @@ function buildVisits(rows) {
       const key = dateKey(d);
       const isTalk = talkDate && dateKey(talkDate) === key && talkTitle;
       if (!visitsByDate.has(key)) visitsByDate.set(key, []);
-      visitsByDate.get(key).push({ name, isTalk: !!isTalk, talkTitle, talkTime, notes });
+      visitsByDate.get(key).push({ name, isTalk: !!isTalk, talkTitle, talkTime, notes, link });
       d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
       guard++;
     }
@@ -223,6 +224,9 @@ function openDayPanel(date, entries) {
       notesEl.textContent = e.notes;
       li.appendChild(notesEl);
     }
+    if (e.link) {
+      li.appendChild(makeSignUpLink(e.link));
+    }
     list.appendChild(li);
   });
   panel.hidden = false;
@@ -255,6 +259,7 @@ function renderUpcoming() {
         ? v.start.toLocaleDateString(undefined, { month: "short", day: "numeric" })
         : `${v.start.toLocaleDateString(undefined, { month: "short", day: "numeric" })} – ${v.end.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
       li.innerHTML = `<div class="entry-name">${escapeHTML(v.name)}</div><div class="entry-meta">${range}</div>`;
+      if (v.link) li.appendChild(makeSignUpLink(v.link));
       visitorsEl.appendChild(li);
     });
   }
@@ -266,9 +271,21 @@ function renderUpcoming() {
       const li = document.createElement("li");
       const dateStr = v.talkDate.toLocaleDateString(undefined, { month: "short", day: "numeric" });
       li.innerHTML = `<div class="entry-name">${escapeHTML(v.talkTitle)}</div><div class="entry-meta">${escapeHTML(v.name)} — ${dateStr}${v.talkTime ? ", " + escapeHTML(v.talkTime) : ""}</div>`;
+      if (v.link) li.appendChild(makeSignUpLink(v.link));
       talksEl.appendChild(li);
     });
   }
+}
+
+function makeSignUpLink(url) {
+  const a = document.createElement("a");
+  a.className = "entry-meta";
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener";
+  a.textContent = "Sign up to meet them →";
+  a.style.display = "block";
+  return a;
 }
 
 function escapeHTML(str) {
