@@ -211,6 +211,10 @@ main {
   padding: 1rem;
 }
 
+.day-panel[hidden] {
+  display: none;
+}
+
 .day-panel-inner {
   background: var(--bg);
   border-radius: 10px;
