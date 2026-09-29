@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Visitor Calendar</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1 id="group-name">Visitor Calendar</h1>
+    <a id="add-visitor-link" class="add-btn" href="#" target="_blank" rel="noopener" hidden>+ Add a visitor</a>
+  </header>
+
+  <main>
+    <section class="calendar-panel">
+      <div class="calendar-controls">
+        <button id="prev-month" aria-label="Previous month">&larr;</button>
+        <h2 id="month-label"></h2>
+        <button id="next-month" aria-label="Next month">&rarr;</button>
+        <button id="today-btn">Today</button>
+      </div>
+      <div class="weekday-row">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div id="calendar-grid" class="calendar-grid"></div>
+    </section>
+
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <h3>Upcoming visitors</h3>
+        <ul id="upcoming-visitors" class="list"></ul>
+      </div>
+      <div class="sidebar-block">
+        <h3>Upcoming talks</h3>
+        <ul id="upcoming-talks" class="list"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <div id="day-panel" class="day-panel" hidden>
+    <div class="day-panel-inner">
+      <button id="day-panel-close" class="close-btn" aria-label="Close">&times;</button>
+      <h3 id="day-panel-title"></h3>
+      <ul id="day-panel-list" class="list"></ul>
+    </div>
+  </div>
+
+  <footer>
+    <span id="sync-status">Loading…</span>
+    <button id="refresh-btn">Refresh</button>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
